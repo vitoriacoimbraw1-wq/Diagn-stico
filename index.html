@@ -3,211 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jheniffer Vitória | Consultoria Financeira Estratégica</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <title>Jheniffer Vitória | Consultoria Estratégica</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-bg: #003333;
-            --accent-gold: #B8860B;
-            --text-light: #F4F4F4;
-            --text-muted: #D1D1D1;
-            --transition: all 0.4s ease;
-            --form-bg: #ffffff;
-            --form-text: #333333;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            background-color: var(--primary-bg);
-            color: var(--text-light);
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3 { font-family: 'Playfair Display', serif; }
-
-        /* --- Fundo Geométrico --- */
-        .hero-section {
-            background-color: var(--primary-bg);
-            background-image: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="diagonalHatch" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(45)"><path d="M-1,1 l2,-2 M0,10 l10,-10 M9,11 l2,-2" stroke="%23B8860B" stroke-width="0.5" fill="none" opacity="0.1"/></pattern><pattern id="trianglePattern" patternUnits="userSpaceOnUse" width="30" height="30"><polygon points="15,0 30,30 0,30" fill="%23B8860B" opacity="0.08" /></pattern></defs><rect width="100%" height="100%" fill="%23003333"/><rect width="100%" height="100%" fill="url(%23diagonalHatch)"/><rect width="100%" height="100%" fill="url(%23trianglePattern)"/></svg>');
-            background-size: cover;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 80px 20px;
-        }
-
-        .container { max-width: 1200px; margin: 0 auto; width: 100%; }
-
-        .logo-box {
-            position: absolute; top: 40px; left: 40px;
-            display: flex; align-items: center; gap: 12px;
-            font-size: 1.1rem; font-weight: 600; color: #fff; letter-spacing: 2px;
-        }
-        .logo-box i { color: var(--accent-gold); font-size: 1.5rem; }
-
-        .hero-grid {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 50px; align-items: center; margin-top: 40px;
-        }
-
-        .hero-text h1 { font-size: clamp(2.4rem, 5vw, 3.5rem); line-height: 1.1; margin-bottom: 25px; }
-        .hero-text p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 35px; max-width: 500px; }
-
-        .btn-gold {
-            background: var(--accent-gold); color: #000;
-            padding: 18px 35px; border-radius: 4px;
-            text-decoration: none; font-weight: 700;
-            text-transform: uppercase; display: inline-block;
-            transition: var(--transition); border: none; cursor: pointer;
-        }
-        .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(184, 134, 11, 0.4); }
-
-        /* --- Formulário --- */
-        .form-card {
-            background: var(--form-bg); padding: 40px;
-            border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); color: var(--form-text);
-        }
-        .form-card h2 { color: var(--primary-bg); margin-bottom: 20px; text-align: center; font-size: 1.6rem; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; font-size: 0.8rem; font-weight: 600; margin-bottom: 5px; text-transform: uppercase; }
-        input, select, textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-family: 'Inter', sans-serif; }
-
-        /* --- Pilares W1 --- */
-        .section-pilares { padding: 100px 20px; text-align: center; background: rgba(0,0,0,0.2); }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; }
-        .card-pilar { background: rgba(255,255,255,0.03); padding: 40px; border-radius: 8px; border: 1px solid rgba(184, 134, 11, 0.1); transition: 0.3s; }
-        .card-pilar:hover { border-color: var(--accent-gold); background: rgba(255,255,255,0.06); }
-        .card-pilar i { font-size: 2.2rem; color: var(--accent-gold); margin-bottom: 20px; }
-        .card-pilar h3 { margin-bottom: 15px; letter-spacing: 1px; }
-
-        /* --- WhatsApp Float --- */
-        .whatsapp-float {
-            position: fixed; bottom: 30px; right: 30px;
-            background: #25d366; color: white;
-            width: 60px; height: 60px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 30px; box-shadow: 2px 2px 15px rgba(0,0,0,0.3);
-            z-index: 1000; transition: 0.3s;
-        }
-        .whatsapp-float:hover { transform: scale(1.1); }
-
-        @media (max-width: 992px) {
-            .hero-grid { grid-template-columns: 1fr; text-align: center; }
-            .hero-text p { margin-inline: auto; }
-            .logo-box { position: relative; top: 0; left: 0; justify-content: center; margin-bottom: 40px; }
-        }
-
-        #success-message { display: none; text-align: center; padding: 20px; }
+        :root { --primary: #003333; --accent: #B8860B; --bg: #ffffff; }
+        body, html { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background-color: #f4f4f4; color: var(--primary); scroll-behavior: smooth; }
+        .hero { background: linear-gradient(135deg, var(--primary) 0%, #064d4d 100%); color: white; padding: 80px 20px; text-align: center; border-bottom: 5px solid var(--accent); }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 5vw, 48px); margin-bottom: 20px; line-height: 1.2; }
+        .hero p { font-size: clamp(16px, 3vw, 20px); max-width: 800px; margin: 0 auto 30px; opacity: 0.9; line-height: 1.6; }
+        .cta-main { display: inline-block; padding: 18px 40px; background: var(--accent); color: white; text-decoration: none; font-weight: 600; border-radius: 4px; text-transform: uppercase; letter-spacing: 2px; transition: transform 0.3s ease; }
+        .form-section { max-width: 600px; margin: -50px auto 100px; padding: 40px; background: var(--bg); border-radius: 8px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .step { display: none; animation: fadeIn 0.5s ease; }
+        .step.active { display: block; }
+        h2 { font-family: 'Playfair Display', serif; margin-bottom: 20px; }
+        input, select, textarea { width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px; box-sizing: border-box; outline-color: var(--accent); font-family: 'Inter', sans-serif; }
+        .btn-nav { width: 100%; padding: 18px; background: var(--primary); color: white; border: none; border-radius: 4px; font-weight: 600; cursor: pointer; text-transform: uppercase; }
+        .back-link { display: block; text-align: center; margin-top: 15px; color: #666; font-size: 14px; cursor: pointer; }
+        .progress-bar { width: 100%; height: 4px; background: #eee; margin-bottom: 30px; }
+        #progress { height: 100%; background: var(--accent); width: 0%; transition: 0.4s; }
+        #outro_campo { display: none; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @media (min-width: 1024px) { .hero { padding: 120px 20px; } .form-section { padding: 60px; } }
     </style>
 </head>
 <body>
 
-    <header class="hero-section">
-        <div class="container">
-            <div class="logo-box">
-                <i class="fa-solid fa-crown"></i>
-                <span>JHENIFFER VITÓRIA</span>
-            </div>
+<section class="hero">
+    <h1>Sua Liberdade Financeira com a Segurança de uma Estratégia Exclusiva.</h1>
+    <p>A segurança de um patrimônio blindado com o toque de uma consultoria humana e estratégica.</p>
+    <a href="#diagnostico" class="cta-main">Iniciar Diagnóstico</a>
+</section>
 
-            <div class="hero-grid">
-                <div class="hero-text">
-                    <h1>Sua Liberdade Financeira com a Segurança de uma Estratégia Exclusiva.</h1>
-                    <p>Planejamento estratégico para proteger sua família e multiplicar seu patrimônio com a segurança de uma consultoria humana.</p>
-                    <a href="#diagnostico" class="btn-gold">Solicitar Diagnóstico</a>
-                </div>
-
-                <div class="form-card" id="diagnostico">
-                    <h2>Diagnóstico Gratuito</h2>
-                    <div id="success-message">
-                        <i class="fa-solid fa-circle-check" style="font-size: 3rem; color: #2f855a;"></i>
-                        <p style="color: #2f855a; margin-top: 10px;">Enviado com sucesso! Entrarei em contato em breve.</p>
-                    </div>
-                    <form action="https://formspree.io/f/mojqjyyg" method="POST" id="lp-form">
-                        <div class="form-group">
-                            <label>Nome Completo</label>
-                            <input type="text" name="nome" required placeholder="Seu nome">
-                        </div>
-                        <div class="form-group">
-                            <label>WhatsApp</label>
-                            <input type="tel" name="whatsapp" required placeholder="(69) 99356-2003">
-                        </div>
-                        <div class="form-group">
-                            <label>Principal Objetivo</label>
-                            <select name="objetivo">
-                                <option>Proteção Familiar</option>
-                                <option>Acúmulo de Patrimônio</option>
-                                <option>Aposentadoria e Sucessão</option>
-                                <option>Independência Financeira</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn-gold" style="width: 100%;">Quero ser consultado(a)</button>
-                    </form>
-                </div>
-            </div>
+<div class="form-section" id="diagnostico">
+    <div class="progress-bar"><div id="progress"></div></div>
+    
+    <form id="leadForm" action="https://formspree.io/f/mojqjyyg" method="POST" onsubmit="enviarWhatsApp(event)">
+        
+        <div class="step active">
+            <h2>Vamos começar? Qual o seu nome?</h2>
+            <input type="text" id="nome" name="nome" placeholder="Nome Completo" required>
+            <button type="button" class="btn-nav" onclick="nextStep()">Continuar</button>
         </div>
-    </header>
 
-    <section class="section-pilares">
-        <div class="container">
-            <h2 style="font-size: 2.2rem; margin-bottom: 10px;">Os Pilares da Consultoria</h2>
-            <p style="color: var(--text-muted); margin-bottom: 40px;">Metodologia focada na saúde financeira integral</p>
-            
-            <div class="grid-3">
-                <div class="card-pilar">
-                    <i class="fa-solid fa-umbrella"></i>
-                    <h3>Proteção</h3>
-                    <p>Garantia de segurança para você e sua família contra riscos e imprevistos do mercado.</p>
-                </div>
-                <div class="card-pilar">
-                    <i class="fa-solid fa-scale-balanced"></i>
-                    <h3>Planejamento</h3>
-                    <p>Organização do fluxo de caixa e equilíbrio para que seus sonhos tenham data para acontecer.</p>
-                </div>
-                <div class="card-pilar">
-                    <i class="fa-solid fa-gem"></i>
-                    <h3>Patrimônio</h3>
-                    <p>Estratégias inteligentes de acúmulo e investimentos para perenidade financeira.</p>
-                </div>
-            </div>
+        <div class="step">
+            <h2>Contato Profissional</h2>
+            <input type="email" name="email" placeholder="E-mail" required>
+            <input type="tel" id="whatsapp_input" name="whatsapp" placeholder="WhatsApp (00) 00000-0000" required>
+            <button type="button" class="btn-nav" onclick="nextStep()">Continuar</button>
+            <span class="back-link" onclick="prevStep()">Voltar</span>
         </div>
-    </section>
 
-    <a href="https://wa.me/+5569993562003" class="whatsapp-float" target="_blank">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
+        <div class="step">
+            <h2>Qual seu principal objetivo hoje?</h2>
+            <select name="objetivo_principal" id="objetivo_select" onchange="verificarOutro()" required>
+                <option value="" disabled selected>Selecione uma opção</option>
+                <option value="Organização Financeira">Organização Financeira</option>
+                <option value="Investimentos">Investimentos</option>
+                <option value="Blindagem Patrimonial">Blindagem Patrimonial</option>
+                <option value="Aposentadoria">Planejar Aposentadoria</option>
+                <option value="Outros">Outros</option>
+            </select>
+            <div id="outro_campo">
+                <textarea id="outro_objetivo_txt" name="outro_objetivo_detalhe" placeholder="Descreva seu objetivo aqui..." rows="3"></textarea>
+            </div>
+            <button type="button" class="btn-nav" onclick="nextStep()">Quase lá...</button>
+            <span class="back-link" onclick="prevStep()">Voltar</span>
+        </div>
 
-    <footer style="padding: 60px 20px; text-align: center; color: var(--text-muted); font-size: 0.8rem;">
-        <p>&copy; 2025 Jheniffer Vitória | Consultoria Financeira Estratégica</p>
-        <p style="margin-top: 10px; opacity: 0.5;">🔒 Diagnóstico Gratuito e Sigiloso</p>
-    </footer>
+        <div class="step">
+            <h2>Para finalizar, qual o melhor horário para conversarmos?</h2>
+            <input type="text" name="horario" placeholder="Ex: Manhã às 10h" required>
+            <p style="font-size: 12px; color: #666; text-align: center;">🔒 Seus dados são protegidos por sigilo absoluto e segurança estratégica.</p>
+            <button type="submit" class="btn-nav" style="background: var(--accent);">Finalizar e Enviar via WhatsApp</button>
+            <span class="back-link" onclick="prevStep()">Voltar</span>
+        </div>
+    </form>
+</div>
 
-    <script>
-        const form = document.getElementById('lp-form');
-        const successMsg = document.getElementById('success-message');
+<script>
+    let current = 0;
+    const steps = document.querySelectorAll(".step");
+    const progress = document.getElementById("progress");
 
-        form.onsubmit = async (e) => {
-            e.preventDefault();
-            const response = await fetch(form.action, {
-                method: 'POST',
-                body: new FormData(form),
-                headers: { 'Accept': 'application/json' }
-            });
-            if (response.ok) {
-                form.style.display = 'none';
-                successMsg.style.display = 'block';
-            } else {
-                alert('Erro no envio. Clique no ícone do WhatsApp para falar comigo agora!');
-            }
-        };
-    </script>
+    function verificarOutro() {
+        const select = document.getElementById("objetivo_select");
+        const outroCampo = document.getElementById("outro_campo");
+        outroCampo.style.display = select.value === "Outros" ? "block" : "none";
+    }
+
+    function updateProgress() {
+        let percent = ((current) / (steps.length - 1)) * 100;
+        progress.style.width = percent + "%";
+    }
+
+    function nextStep() {
+        const inputs = steps[current].querySelectorAll("input, select");
+        let valid = true;
+        inputs.forEach(i => { if(!i.checkValidity()) { i.reportValidity(); valid = false; } });
+        if(valid) {
+            steps[current].classList.remove("active");
+            current++;
+            steps[current].classList.add("active");
+            updateProgress();
+        }
+    }
+
+    function prevStep() {
+        steps[current].classList.remove("active");
+        current--;
+        steps[current].classList.add("active");
+        updateProgress();
+    }
+
+    function enviarWhatsApp(event) {
+        // Pega os dados para a mensagem
+        const nome = document.getElementById('nome').value;
+        const objetivoSelect = document.getElementById('objetivo_select').value;
+        const objetivoFinal = objetivoSelect === "Outros" ? document.getElementById('outro_objetivo_txt').value : objetivoSelect;
+        
+        // Configura o número e a mensagem
+        const seuNumero = "5511999999999"; // SUBSTITUA PELO SEU NÚMERO AQUI (com 55 + DDD)
+        const mensagem = `Olá, Jheniffer! Acabei de realizar meu diagnóstico financeiro no site. Meu nome é ${nome} e meu principal objetivo hoje é: ${objetivoFinal}. Gostaria de agendar minha sessão estratégica!`;
+        
+        const url = `https://wa.me/${seuNumero}?text=${encodeURIComponent(mensagem)}`;
+        
+        // Abre o WhatsApp em nova aba
+        window.open(url, '_blank');
+    }
+</script>
+
 </body>
 </html>
