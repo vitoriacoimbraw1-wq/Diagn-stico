@@ -13,12 +13,13 @@
 
     <style>
         :root {
-            --primary-bg: #003333;
-            --accent-gold: #B8860B;
+            --primary-bg: #003333; /* Verde Escuro */
+            --accent-gold: #B8860B; /* Dourado */
             --text-light: #F4F4F4;
             --text-muted: #D1D1D1;
-            --card-bg: rgba(255, 255, 255, 0.05);
             --transition: all 0.4s ease;
+            --form-bg: #ffffff;
+            --form-text: #333333;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -32,61 +33,93 @@
         }
 
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        /* --- Hero --- */
-        header {
-            min-height: 90vh;
+        /* --- Fundo Geométrico Premium --- */
+        .hero-section {
+            background-color: var(--primary-bg);
+            background-image: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="diagonalHatch" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(45)"><path d="M-1,1 l2,-2 M0,10 l10,-10 M9,11 l2,-2" stroke="%23B8860B" stroke-width="0.5" fill="none" opacity="0.1"/></pattern><pattern id="circlePattern" patternUnits="userSpaceOnUse" width="20" height="20"><circle cx="10" cy="10" r="2" fill="%23B8860B" opacity="0.1"/></pattern><pattern id="trianglePattern" patternUnits="userSpaceOnUse" width="30" height="30"><polygon points="15,0 30,30 0,30" fill="%23B8860B" opacity="0.08" /></pattern><pattern id="squarePattern" patternUnits="userSpaceOnUse" width="25" height="25"><rect x="5" y="5" width="15" height="15" fill="none" stroke="%23B8860B" stroke-width="0.8" opacity="0.1"/></pattern></defs><rect width="100%" height="100%" fill="%23003333"/><rect width="100%" height="100%" fill="url(%23diagonalHatch)"/><rect width="100%" height="100%" fill="url(%23circlePattern)"/><rect width="100%" height="100%" fill="url(%23trianglePattern)"/><rect width="100%" height="100%" fill="url(%23squarePattern)"/></svg>');
+            background-size: cover;
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
             padding: 80px 20px;
-            background: radial-gradient(circle at top right, rgba(184, 134, 11, 0.15), transparent);
         }
 
-        .hero-content h1 { font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 24px; }
-        .hero-content p { font-size: clamp(1.1rem, 3vw, 1.4rem); color: var(--text-muted); margin-bottom: 40px; max-width: 800px; margin-inline: auto; }
+        .container { max-width: 1200px; margin: 0 auto; width: 100%; }
 
+        /* --- Header & Logo --- */
+        .logo-box {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+        .logo-box i { color: var(--accent-gold); font-size: 1.8rem; }
+
+        /* --- Hero Grid --- */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 5vw, 3.8rem);
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            max-width: 500px;
+        }
+
+        /* --- Botão Principal --- */
         .btn-gold {
-            background-color: var(--accent-gold);
+            background: var(--accent-gold);
             color: #000;
-            padding: 18px 45px;
+            padding: 18px 35px;
             border-radius: 4px;
             text-decoration: none;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: var(--transition);
             display: inline-block;
-            position: relative;
-            overflow: hidden;
+            transition: var(--transition);
             border: none;
             cursor: pointer;
         }
-
         .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(184, 134, 11, 0.4); }
 
-        /* --- Soluções --- */
-        .solucoes { padding: 100px 0; background: rgba(0,0,0,0.2); }
-        .grid-solucoes { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 50px; }
-        .card-solucao { padding: 40px; background: var(--card-bg); border: 1px solid rgba(184, 134, 11, 0.1); border-radius: 8px; text-align: center; transition: var(--transition); }
-        .card-solucao i { font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 20px; }
+        /* --- Formulário Lateral --- */
+        .form-card {
+            background: var(--form-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            color: var(--form-text);
+        }
 
-        /* --- Depoimentos --- */
-        .testimonials { padding: 100px 0; }
-        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .testimonial-card { background: rgba(255, 255, 255, 0.03); padding: 30px; border-left: 3px solid var(--accent-gold); border-radius: 0 8px 8px 0; }
-        .testimonial-author { font-weight: 600; color: var(--accent-gold); margin-top: 15px; display: block; }
+        .form-card h2 { color: var(--primary-bg); margin-bottom: 20px; text-align: center; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 5px; }
+        input, select, textarea {
+            width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-family: 'Inter', sans-serif;
+        }
 
-        /* --- Formulário --- */
-        .cta-section { padding: 100px 0; background: #fff; color: #333; }
-        .form-card { max-width: 700px; margin: 0 auto; padding: 40px; border-radius: 12px; }
-        .form-group { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--primary-bg); }
-        input, select, textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-family: 'Inter', sans-serif; }
-        
-        #success-message { display: none; text-align: center; padding: 40px; color: #2f855a; }
+        /* --- Seções Adicionais --- */
+        .section-padding { padding: 100px 20px; text-align: center; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+        .card { background: rgba(255,255,255,0.05); padding: 40px; border-radius: 8px; border: 1px solid rgba(184, 134, 11, 0.1); }
+        .card i { font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 20px; }
 
         /* --- WhatsApp Float --- */
         .whatsapp-float {
@@ -95,109 +128,103 @@
             right: 30px;
             background: #25d366;
             color: white;
-            width: 60px;
-            height: 60px;
+            width: 60px; height: 60px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-            z-index: 1000;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 30px; box-shadow: 2px 2px 15px rgba(0,0,0,0.3);
+            z-index: 1000; transition: transform 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+
+        /* --- Responsividade --- */
+        @media (max-width: 992px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; margin-top: 60px; }
+            .hero-text p { margin-inline: auto; }
+            .logo-box { position: relative; top: 0; left: 0; justify-content: center; margin-bottom: 40px; }
         }
 
-        footer { padding: 50px; text-align: center; background: var(--primary-bg); color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.1); }
+        #success-message { display: none; text-align: center; color: #2f855a; padding: 20px; }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="container hero-content">
-            <h1>Sua Liberdade Financeira com a Segurança de uma Estratégia Exclusiva.</h1>
-            <p>A segurança de um patrimônio blindado com o toque de uma consultoria humana e estratégica.</p>
-            <a href="#diagnostico" class="btn-gold">Solicitar Diagnóstico Estratégico</a>
+    <header class="hero-section">
+        <div class="container">
+            <div class="logo-box">
+                <i class="fa-solid fa-building-columns"></i>
+                <span>JHENIFFER VITÓRIA</span>
+            </div>
+
+            <div class="hero-grid">
+                <div class="hero-text">
+                    <h1>Sua Liberdade Financeira com uma Estratégia Exclusiva.</h1>
+                    <p>Patrimônio blindado e consultoria humana para quem domina o próprio destino.</p>
+                    <a href="#diagnostico" class="btn-gold">Iniciar Diagnóstico</a>
+                </div>
+
+                <div class="form-card" id="diagnostico">
+                    <h2>Diagnóstico Estratégico</h2>
+                    <div id="success-message">
+                        <i class="fa-solid fa-circle-check" style="font-size: 3rem;"></i>
+                        <p>Enviado com sucesso! Entrarei em contato.</p>
+                    </div>
+                    <form action="https://formspree.io/f/mojqjyyg" method="POST" id="lp-form">
+                        <div class="form-group">
+                            <label>Nome Completo</label>
+                            <input type="text" name="nome" required placeholder="Seu nome">
+                        </div>
+                        <div class="form-group">
+                            <label>WhatsApp</label>
+                            <input type="tel" name="whatsapp" required placeholder="(00) 00000-0000">
+                        </div>
+                        <div class="form-group">
+                            <label>Melhor horário para contato</label>
+                            <select name="horario">
+                                <option>Manhã</option>
+                                <option>Tarde</option>
+                                <option>Noite</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Seu maior objetivo financeiro</label>
+                            <textarea name="objetivo" rows="2"></textarea>
+                        </div>
+                        <button type="submit" class="btn-gold" style="width: 100%;">Enviar Agora</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </header>
 
-    <section class="solucoes">
+    <section class="section-padding">
         <div class="container">
-            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">Pilares da Sua Prosperidade</h2>
-            <div class="grid-solucoes">
-                <div class="card-solucao">
-                    <i class="fa-solid fa-id-card-clip"></i>
-                    <h3>Diagnóstico de Perfil</h3>
-                    <p>Análise profunda da sua situação atual.</p>
-                </div>
-                <div class="card-solucao">
+            <h2>Pilares da Consultoria</h2>
+            <div class="grid-3">
+                <div class="card">
                     <i class="fa-solid fa-shield-halved"></i>
-                    <h3>Blindagem Patrimonial</h3>
-                    <p>Proteção jurídica e financeira para sua família.</p>
+                    <h3>Blindagem</h3>
+                    <p>Proteção do seu patrimônio contra imprevistos.</p>
                 </div>
-                <div class="card-solucao">
-                    <i class="fa-solid fa-user-tie"></i>
-                    <h3>Acompanhamento Humano</h3>
-                    <p>Estratégia personalizada, sem algoritmos frios.</p>
+                <div class="card">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <h3>Estratégia</h3>
+                    <p>Planejamento focado em crescimento real.</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="testimonials">
-        <div class="container">
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <p>"A Jheniffer mudou minha visão sobre o futuro. Estratégia impecável."</p>
-                    <span class="testimonial-author">— Ricardo M., Empresário</span>
-                </div>
-                <div class="testimonial-card">
-                    <p>"Segurança e clareza. Recomendo para quem busca o próximo nível."</p>
-                    <span class="testimonial-author">— Dra. Helena S., Médica</span>
+                <div class="card">
+                    <i class="fa-solid fa-handshake"></i>
+                    <h3>Exclusividade</h3>
+                    <p>Atendimento humano e personalizado.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="cta-section" id="diagnostico">
-        <div class="container">
-            <div class="form-card">
-                <h2 style="text-align: center; margin-bottom: 30px;">Inicie seu Diagnóstico Gratuito</h2>
-                <div id="success-message">
-                    <i class="fa-solid fa-circle-check" style="font-size: 3rem;"></i>
-                    <h3>Recebemos seus dados!</h3>
-                    <p>Aguarde nosso contato em breve.</p>
-                </div>
-                <form action="https://formspree.io/f/mojqjyyg" method="POST" id="lp-form">
-                    <div class="form-group">
-                        <label>Nome Completo</label>
-                        <input type="text" name="nome" required>
-                    </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                        <div class="form-group">
-                            <label>WhatsApp</label>
-                            <input type="tel" name="whatsapp" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Instagram</label>
-                            <input type="text" name="instagram">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Qual seu maior desafio financeiro?</label>
-                        <textarea name="mensagem" rows="3"></textarea>
-                    </div>
-                    <button type="submit" class="btn-gold" style="width: 100%;">Enviar Agora</button>
-                    <p style="font-size: 0.8rem; text-align: center; margin-top: 15px; color: #666;">🔒 Seus dados estão protegidos por sigilo bancário.</p>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <a href="https://wa.me/SEUNUMERO" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/69993562003" class="whatsapp-float" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <footer>
-        <p>&copy; 2025 Jheniffer Vitória. Todos os direitos reservados.</p>
+    <footer style="padding: 40px; text-align: center; font-size: 0.8rem; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.1);">
+        &copy; 2025 Jheniffer Vitória | Consultoria Financeira Estratégica
     </footer>
 
     <script>
@@ -214,6 +241,8 @@
             if (response.ok) {
                 form.style.display = 'none';
                 successMsg.style.display = 'block';
+            } else {
+                alert('Erro ao enviar. Tente pelo WhatsApp!');
             }
         };
     </script>
