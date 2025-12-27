@@ -6,81 +6,193 @@
     <title>Jheniffer Vitória | Consultoria Estratégica</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        /* RESET BÁSICO PARA EVITAR TELA BRANCA */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         :root {
-            --primary: #003333; /* Verde Profundo */
-            --accent: #B8860B; /* Dourado Nobre */
+            --primary: #003333; /* VERDE ESCURO PROMETIDO */
+            --accent: #B8860B; /* DOURADO NOBRE */
             --bg-body: #fdfdfb;
-            --white: #ffffff;
         }
 
-        body, html {
-            margin: 0; padding: 0; font-family: 'Inter', sans-serif;
-            background-color: var(--bg-body); color: var(--primary);
-            scroll-behavior: smooth; overflow-x: hidden;
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--primary);
+            min-height: 100vh;
         }
 
-        /* Hero Section de Alto Padrão */
+        /* HERO SECTION - FUNDO ESCURO OBRIGATÓRIO */
         .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, #042424 100%);
-            color: white; padding: 120px 20px 80px; text-align: center;
+            background-color: var(--primary);
+            background: linear-gradient(135deg, #003333 0%, #042424 100%);
+            color: #ffffff !important;
+            padding: 120px 20px 100px;
+            text-align: center;
             border-bottom: 5px solid var(--accent);
         }
 
         .hero h1 {
-            font-family: 'Playfair Display', serif; font-size: clamp(34px, 7vw, 56px);
-            margin-bottom: 25px; line-height: 1.1; letter-spacing: -1px;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 7vw, 56px);
+            margin-bottom: 20px;
+            color: #ffffff;
         }
 
         .hero p {
-            font-size: clamp(16px, 3vw, 20px); max-width: 850px; margin: 0 auto 40px;
-            opacity: 0.9; line-height: 1.8; font-weight: 300; letter-spacing: 0.5px;
+            font-size: clamp(16px, 3vw, 20px);
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+            line-height: 1.6;
         }
 
-        /* Pilares Estratégicos - O Design Extraordinário */
+        /* PILARES ESTRATÉGICOS */
         .pilares-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
             max-width: 1200px;
-            margin: -50px auto 70px;
+            margin: -50px auto 50px;
             padding: 0 20px;
         }
 
         .pilar-card {
-            background: var(--white);
+            background: #ffffff;
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
             padding: 40px 30px;
             text-align: center;
-            border-radius: 2px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
-            transition: all 0.4s ease;
-            border-top: 4px solid transparent;
-        }
-
-        .pilar-card:hover {
-            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             border-top: 4px solid var(--accent);
-        }
-
-        .pilar-icon {
-            font-size: 32px; margin-bottom: 20px; display: block; color: var(--accent);
         }
 
         .pilar-card h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 22px; margin-bottom: 15px; letter-spacing: 1px;
+            margin-bottom: 15px;
+            font-size: 22px;
         }
 
-        .pilar-card p {
-            font-size: 15px; color: #555; line-height: 1.6; font-weight: 300;
-        }
-
-        /* Formulário de Captação */
+        /* FORMULÁRIO */
         .form-section {
-            max-width: 650px; margin: 0 auto 120px; padding: 60px;
-            background: var(--white); border-radius: 4px;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.08);
+            max-width: 600px;
+            margin: 0 auto 100px;
+            background: #ffffff;
+            padding: 50px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+            border-radius: 4px;
             position: relative;
         }
 
-        .progress-line {
-            position: absolute; top:
+        .step { display: none; }
+        .step.active { display: block; animation: fadeIn 0.5s ease; }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-nav {
+            width: 100%;
+            padding: 20px;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        .btn-nav:hover { background: var(--accent); }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 600px) {
+            .form-section { width: 90%; padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+<section class="hero">
+    <h1>Estratégia e Elegância Financeira</h1>
+    <p>A segurança de um patrimônio blindado com o toque de uma consultoria humana. Domine seu destino financeiro.</p>
+</section>
+
+<div class="pilares-container">
+    <div class="pilar-card">
+        <h3>Organização</h3>
+        <p>Clareza total e estruturação de fluxos de capital.</p>
+    </div>
+    <div class="pilar-card">
+        <h3>Investimentos</h3>
+        <p>Curadoria estratégica para proteção e rentabilidade.</p>
+    </div>
+    <div class="pilar-card">
+        <h3>Blindagem</h3>
+        <p>Segurança para que seu legado permaneça inabalável.</p>
+    </div>
+</div>
+
+<div class="form-section">
+    <form id="leadForm" onsubmit="enviarWhatsApp(event)">
+        <div class="step active">
+            <h2>Qual seu nome completo?</h2>
+            <input type="text" id="nome" placeholder="Digite seu nome" required>
+            <button type="button" class="btn-nav" onclick="nextStep()">Continuar</button>
+        </div>
+
+        <div class="step">
+            <h2>Qual seu objetivo?</h2>
+            <select id="objetivo" required>
+                <option value="Organização Financeira">Organização Financeira</option>
+                <option value="Investimentos">Investimentos</option>
+                <option value="Blindagem Patrimonial">Blindagem Patrimonial</option>
+                <option value="Outros">Outros</option>
+            </select>
+            <textarea id="detalhes" placeholder="Detalhes adicionais..." rows="3"></textarea>
+            <button type="button" class="btn-nav" onclick="nextStep()">Próximo</button>
+        </div>
+
+        <div class="step">
+            <h2>Melhor horário para contato?</h2>
+            <input type="text" id="horario" placeholder="Ex: Tarde às 14h" required>
+            <button type="submit" class="btn-nav" style="background: var(--accent);">Finalizar no WhatsApp</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    let current = 0;
+    const steps = document.querySelectorAll(".step");
+
+    function nextStep() {
+        steps[current].classList.remove("active");
+        current++;
+        steps[current].classList.add("active");
+    }
+
+    function enviarWhatsApp(event) {
+        event.preventDefault();
+        const nome = document.getElementById('nome').value;
+        const objetivo = document.getElementById('objetivo').value;
+        const detalhes = document.getElementById('detalhes').value;
+        const horario = document.getElementById('horario').value;
+
+        const seuNumero = "5511999999999"; // <--- COLOQUE SEU NUMERO AQUI!
+        
+        let msg = `Olá Jheniffer! ✨%0A*Nome:* ${nome}%0A*Objetivo:* ${objetivo}%0A*Detalhes:* ${detalhes}%0A*Horário:* ${horario}`;
+        window.open(`https://wa.me/${seuNumero}?text=${msg}`, '_blank');
+    }
+</script>
+
+</body>
+</html>
