@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise de Perfil | Jheniffer Vitória</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #003333; /* O verde do seu banner */
+            --bg: #f9f9f9;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        .form-card {
+            background: #fff;
+            max-width: 550px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 26px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+            margin: 25px 0 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        .form-group { margin-bottom: 18px; }
+
+        label {
+            display: block;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+
+        input:focus { outline: 1px solid var(--primary); border-color: var(--primary); }
+
+        button {
+            width: 100%;
+            padding: 16px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        button:hover { background-color: #004d4d; }
+
+        .footer-note {
+            text-align: center;
+            font-size: 11px;
+            color: #aaa;
+            margin-top: 25px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-card">
+    <h1>O Primeiro Passo para sua Liberdade Financeira</h1>
+    <p class="subtitle">Complete este diagnóstico para que eu possa entender seu perfil e te guiar na direção das suas conquistas.</p>
+
+    <form action="LINK_AQUI" method="POST">
+        
+        <div class="section-title">Identificação Profissional</div>
+        
+        <div class="form-group">
+            <label>Qual seu nome?</label>
+            <input type="text" name="nome" placeholder="Seu nome completo" required>
+        </div>
+
+        <div class="form-group">
+            <label>Seu melhor e-mail?</label>
+            <input type="email" name="email" placeholder="email@exemplo.com" required>
+        </div>
+
+        <div class="form-group">
+            <label>Qual seu Instagram?</label>
+            <input type="text" name="instagram" placeholder="@seuusuario">
+        </div>
+
+        <div class="section-title">Vida e Localização</div>
+
+        <div class="form-group">
+            <label>Cidade e Estado?</label>
+            <input type="text" name="cidade_estado" placeholder="Ex: Ji-Paraná, RO" required>
+        </div>
+
+        <div class="form-group">
+            <label>Estado Civil?</label>
+            <select name="estado_civil">
+                <option value="solteiro">Solteiro(a)</option>
+                <option value="casado">Casado(a) / União Estável</option>
+                <option value="divorciado">Divorciado(a)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Tem filhos? Se sim, quantos?</label>
+            <input type="text" name="filhos" placeholder="Ex: Não tenho / Sim, dois">
+        </div>
+
+        <div class="section-title">Objetivos e Contato</div>
+
+        <div class="form-group">
+            <label>Qual objetivo financeiro ou sonho hoje? (Investimentos, reserva, bens...)</label>
+            <textarea name="objetivos" rows="3" placeholder="Conte um pouco sobre o que você deseja alcançar..."></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Número de celular (WhatsApp)?</label>
+            <input type="tel" name
