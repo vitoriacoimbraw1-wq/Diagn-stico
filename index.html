@@ -21,7 +21,6 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        
         body {
             background-color: var(--primary-bg);
             color: var(--text-light);
@@ -30,7 +29,6 @@
             line-height: 1.6;
         }
 
-        /* --- BACKGROUND EXTRAORDINÁRIO --- */
         .hero-section {
             min-height: 100vh;
             display: flex;
@@ -50,12 +48,7 @@
             border-bottom: 1px solid var(--accent-gold); padding-bottom: 5px;
         }
 
-        .hero-grid { 
-            display: grid; 
-            grid-template-columns: 1.1fr 0.9fr; 
-            gap: 60px; 
-            align-items: center; 
-        }
+        .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; }
 
         .hero-text h1 {
             font-family: 'Playfair Display', serif;
@@ -65,80 +58,39 @@
         .hero-text h1 i { font-style: italic; font-weight: 400; }
         .hero-text p { font-size: 1.1rem; opacity: 0.8; margin-bottom: 40px; max-width: 500px; font-weight: 300; }
 
-        /* --- FORM CARD AJUSTADO --- */
         .form-card {
-            background: var(--form-bg); 
-            padding: 45px;
-            border-radius: 4px; 
-            color: #1a1a1a;
+            background: var(--form-bg); padding: 40px;
+            border-radius: 4px; color: #1a1a1a;
             box-shadow: 0 40px 80px rgba(0,0,0,0.4);
             width: 100%;
         }
 
-        .form-card h2 { 
-            font-family: 'Playfair Display', serif; 
-            font-size: 1.8rem; 
-            margin-bottom: 30px; 
-            text-align: center; 
-            color: var(--primary-bg); 
-        }
-
-        .form-group { margin-bottom: 25px; position: relative; }
-        
-        label { 
-            display: block; 
-            font-size: 0.7rem; 
-            font-weight: 600; 
-            margin-bottom: 8px; 
-            text-transform: uppercase; 
-            color: #888; 
-            letter-spacing: 1px; 
-        }
+        .form-card h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 25px; text-align: center; color: var(--primary-bg); }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; font-size: 0.65rem; font-weight: 600; margin-bottom: 5px; text-transform: uppercase; color: #888; letter-spacing: 1px; }
         
         input, select, textarea {
-            width: 100%; 
-            border: none; 
-            border-bottom: 1px solid #e0e0e0;
-            padding: 12px 0; 
-            font-family: 'Inter', sans-serif; 
-            font-size: 1rem;
-            background: transparent; 
-            transition: 0.3s;
-            border-radius: 0;
+            width: 100%; border: none; border-bottom: 1px solid #e0e0e0;
+            padding: 10px 0; font-family: 'Inter', sans-serif; font-size: 0.95rem;
+            background: transparent; transition: 0.3s;
         }
-
         input:focus, select:focus, textarea:focus { outline: none; border-bottom-color: var(--accent-gold); }
 
         .btn-submit {
-            background: var(--accent-gold); 
-            color: var(--primary-bg);
-            width: 100%; 
-            padding: 20px; 
-            border: none; 
-            margin-top: 15px;
-            font-weight: 600; 
-            text-transform: uppercase; 
-            letter-spacing: 2px;
-            cursor: pointer; 
-            transition: var(--transition);
+            background: var(--accent-gold); color: var(--primary-bg);
+            width: 100%; padding: 18px; border: none; margin-top: 15px;
+            font-weight: 600; text-transform: uppercase; letter-spacing: 2px;
+            cursor: pointer; transition: var(--transition);
         }
 
-        /* --- RESPONSIVIDADE (CELULAR) --- */
         @media (max-width: 992px) {
             .hero-section { padding: 120px 20px 60px; height: auto; }
             .hero-grid { grid-template-columns: 1fr; gap: 50px; text-align: center; }
             .hero-text p { margin: 0 auto 40px; }
             .logo-area { position: absolute; top: 30px; left: 50%; transform: translateX(-50%); border: none; }
-            .form-card { padding: 35px 25px; } /* Menos preenchimento lateral no celular */
+            .form-card { padding: 30px 20px; }
         }
 
-        /* --- PILARES --- */
-        .pilares { padding: 100px 20px; background: rgba(0,0,0,0.2); text-align: center; }
-        .pilar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; }
-        .pilar-card { padding: 40px 25px; border: 1px solid rgba(197, 160, 89, 0.1); }
-        .pilar-card i { font-size: 2rem; color: var(--accent-gold); margin-bottom: 20px; }
-
-        /* --- WHATSAPP --- */
         .wa-float {
             position: fixed; bottom: 30px; right: 30px;
             display: flex; align-items: center; gap: 12px;
@@ -168,9 +120,12 @@
                     <form id="lp-form">
                         <div class="form-group">
                             <label>Nome Completo</label>
-                            <input type="text" id="nome" required placeholder="Sua resposta">
+                            <input type="text" id="nome" required>
                         </div>
-                        
+                        <div class="form-group">
+                            <label>WhatsApp</label>
+                            <input type="tel" id="whatsapp_cli" placeholder="(00) 00000-0000" required>
+                        </div>
                         <div class="form-group">
                             <label>Estado Civil</label>
                             <select id="estado_civil" required>
@@ -181,7 +136,6 @@
                                 <option value="Divorciado(a)">Divorciado(a)</option>
                             </select>
                         </div>
-
                         <div class="form-group">
                             <label>Principal Objetivo</label>
                             <select id="objetivo" onchange="toggleOutros()" required>
@@ -194,12 +148,10 @@
                                 <option value="Outros">Outros</option>
                             </select>
                         </div>
-
                         <div class="form-group" id="aba-outros" style="display: none;">
                             <label>Especifique seu objetivo</label>
-                            <textarea id="outro_objetivo" rows="2" placeholder="Descreva aqui..."></textarea>
+                            <textarea id="outro_objetivo" rows="2"></textarea>
                         </div>
-
                         <div class="form-group">
                             <label>Melhor Horário para Contato</label>
                             <select id="horario" required>
@@ -209,24 +161,12 @@
                                 <option value="Noite (Após 18h)">Noite (Após 18h)</option>
                             </select>
                         </div>
-
                         <button type="submit" class="btn-submit">Solicitar Consultoria</button>
                     </form>
                 </div>
             </div>
         </div>
     </header>
-
-    <section class="pilares">
-        <div class="container">
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 10px;">Metodologia W1</h2>
-            <div class="pilar-grid">
-                <div class="pilar-card"><i class="fa-solid fa-umbrella"></i><h3>Proteção</h3><p>Segurança para sua família e padrão de vida.</p></div>
-                <div class="pilar-card"><i class="fa-solid fa-compass"></i><h3>Planejamento</h3><p>Rotas claras para seus objetivos.</p></div>
-                <div class="pilar-card"><i class="fa-solid fa-crown"></i><h3>Patrimônio</h3><p>Acúmulo inteligente e sucessão tranquila.</p></div>
-            </div>
-        </div>
-    </section>
 
     <a href="https://wa.me/+5569993562003?text=Olá%20Jheniffer,%20gostaria%20de%20solicitar%20um%20diagnóstico%20financeiro." class="wa-float" target="_blank">
         <span>Falar com Consultora</span>
@@ -243,17 +183,25 @@
         const form = document.getElementById('lp-form');
         form.onsubmit = (e) => {
             e.preventDefault();
-            const nomeCli = document.getElementById('nome').value;
-            const estadoCivilCli = document.getElementById('estado_civil').value;
-            const objCli = document.getElementById('objetivo').value;
-            const outroObj = document.getElementById('outro_objetivo').value;
-            const horarioCli = document.getElementById('horario').value;
+            const nome = document.getElementById('nome').value;
+            const zap = document.getElementById('whatsapp_cli').value;
+            const civil = document.getElementById('estado_civil').value;
+            const objBase = document.getElementById('objetivo').value;
+            const outro = document.getElementById('outro_objetivo').value;
+            const hora = document.getElementById('horario').value;
             
-            let objetivoFinal = (objCli === 'Outros') ? outroObj : objCli;
+            let objFinal = (objBase === 'Outros') ? outro : objBase;
             
-            const mensagem = `Olá Jheniffer, meu nome é ${nomeCli} (${estadoCivilCli}). Gostaria de realizar um diagnóstico para o meu objetivo de: ${objetivoFinal}. O melhor horário para contato é na ${horarioCli}.`;
-            const msgEncoded = encodeURIComponent(mensagem);
-            window.open(`https://wa.me/+5569993562003?text=${msgEncoded}`, '_blank');
+            // MENSAGEM COM TODOS OS DADOS SOLICITADOS
+            const texto = `Olá Jheniffer! Me chamo ${nome}. 
+            
+Meu objetivo principal é: ${objFinal}.
+O melhor horário para falarmos é: ${hora}.
+
+Gostaria de realizar meu diagnóstico estratégico.`;
+
+            const link = `https://wa.me/+5569993562003?text=${encodeURIComponent(texto)}`;
+            window.open(link, '_blank');
         };
     </script>
 </body>
