@@ -8,75 +8,90 @@
     <style>
         :root { --primary: #003333; --accent: #B8860B; --bg: #ffffff; }
         body, html { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background-color: #f4f4f4; color: var(--primary); scroll-behavior: smooth; }
-        .hero { background: linear-gradient(135deg, var(--primary) 0%, #064d4d 100%); color: white; padding: 80px 20px; text-align: center; border-bottom: 5px solid var(--accent); }
+        
+        /* Design Responsivo - Computador e Telemóvel */
+        .hero { background: linear-gradient(135deg, var(--primary) 0%, #064d4d 100%); color: white; padding: 100px 20px; text-align: center; border-bottom: 5px solid var(--accent); }
         .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 5vw, 48px); margin-bottom: 20px; line-height: 1.2; }
         .hero p { font-size: clamp(16px, 3vw, 20px); max-width: 800px; margin: 0 auto 30px; opacity: 0.9; line-height: 1.6; }
-        .cta-main { display: inline-block; padding: 18px 40px; background: var(--accent); color: white; text-decoration: none; font-weight: 600; border-radius: 4px; text-transform: uppercase; letter-spacing: 2px; transition: transform 0.3s ease; }
+        
+        .cta-main { display: inline-block; padding: 18px 40px; background: var(--accent); color: white; text-decoration: none; font-weight: 600; border-radius: 4px; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; cursor: pointer; }
+        
         .form-section { max-width: 600px; margin: -50px auto 100px; padding: 40px; background: var(--bg); border-radius: 8px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        
         .step { display: none; animation: fadeIn 0.5s ease; }
         .step.active { display: block; }
-        h2 { font-family: 'Playfair Display', serif; margin-bottom: 20px; }
+        
+        h2 { font-family: 'Playfair Display', serif; margin-bottom: 25px; font-size: 24px; }
+        
         input, select, textarea { width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px; box-sizing: border-box; outline-color: var(--accent); font-family: 'Inter', sans-serif; }
-        .btn-nav { width: 100%; padding: 18px; background: var(--primary); color: white; border: none; border-radius: 4px; font-weight: 600; cursor: pointer; text-transform: uppercase; }
+        
+        .btn-nav { width: 100%; padding: 18px; background: var(--primary); color: white; border: none; border-radius: 4px; font-weight: 600; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
+        .btn-nav:hover { background: var(--accent); }
+        
         .back-link { display: block; text-align: center; margin-top: 15px; color: #666; font-size: 14px; cursor: pointer; }
+        
         .progress-bar { width: 100%; height: 4px; background: #eee; margin-bottom: 30px; }
         #progress { height: 100%; background: var(--accent); width: 0%; transition: 0.4s; }
-        #outro_campo { display: none; }
+
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        @media (min-width: 1024px) { .hero { padding: 120px 20px; } .form-section { padding: 60px; } }
+        
+        @media (min-width: 1024px) { .hero { padding: 140px 20px; } .form-section { padding: 60px; } }
     </style>
 </head>
 <body>
 
 <section class="hero">
     <h1>Sua Liberdade Financeira com a Segurança de uma Estratégia Exclusiva.</h1>
-    <p>A segurança de um patrimônio blindado com o toque de uma consultoria humana e estratégica.</p>
+    <p>A segurança de um património blindado com o toque de uma consultoria humana e estratégica. Descubra como é viver com a tranquilidade de quem domina o próprio destino financeiro.</p>
     <a href="#diagnostico" class="cta-main">Iniciar Diagnóstico</a>
 </section>
 
 <div class="form-section" id="diagnostico">
     <div class="progress-bar"><div id="progress"></div></div>
     
-    <form id="leadForm" action="https://formspree.io/f/mojqjyyg" method="POST" onsubmit="enviarWhatsApp(event)">
+    <form id="leadForm" action="https://formspree.io/f/mojqjyyg" method="POST" onsubmit="prepararEnvio(event)">
         
         <div class="step active">
-            <h2>Vamos começar? Qual o seu nome?</h2>
+            <h2>Vamos começar? Qual o seu nome completo?</h2>
             <input type="text" id="nome" name="nome" placeholder="Nome Completo" required>
             <button type="button" class="btn-nav" onclick="nextStep()">Continuar</button>
         </div>
 
         <div class="step">
-            <h2>Contato Profissional</h2>
-            <input type="email" name="email" placeholder="E-mail" required>
-            <input type="tel" id="whatsapp_input" name="whatsapp" placeholder="WhatsApp (00) 00000-0000" required>
+            <h2>Dados de Contacto Profissional</h2>
+            <input type="email" name="email" placeholder="Seu melhor e-mail" required>
+            <input type="tel" id="whatsapp_input" name="whatsapp" placeholder="WhatsApp (com DDD)" required>
             <button type="button" class="btn-nav" onclick="nextStep()">Continuar</button>
             <span class="back-link" onclick="prevStep()">Voltar</span>
         </div>
 
         <div class="step">
             <h2>Qual seu principal objetivo hoje?</h2>
-            <select name="objetivo_principal" id="objetivo_select" onchange="verificarOutro()" required>
+            <select name="objetivo_principal" id="objetivo_select" required>
                 <option value="" disabled selected>Selecione uma opção</option>
                 <option value="Organização Financeira">Organização Financeira</option>
-                <option value="Investimentos">Investimentos</option>
+                <option value="Investimentos">Investimentos (Começar ou Rentabilizar)</option>
                 <option value="Blindagem Patrimonial">Blindagem Patrimonial</option>
                 <option value="Aposentadoria">Planejar Aposentadoria</option>
-                <option value="Outros">Outros</option>
+                <option value="Outros">Outros (Descreva abaixo)</option>
             </select>
-            <div id="outro_campo">
-                <textarea id="outro_objetivo_txt" name="outro_objetivo_detalhe" placeholder="Descreva seu objetivo aqui..." rows="3"></textarea>
-            </div>
+            
+            <textarea id="detalhes_objetivo" name="detalhes_objetivo" placeholder="Use este espaço para detalhar o seu objetivo ou descrever outro foco..." rows="4"></textarea>
+
             <button type="button" class="btn-nav" onclick="nextStep()">Quase lá...</button>
             <span class="back-link" onclick="prevStep()">Voltar</span>
         </div>
 
         <div class="step">
             <h2>Para finalizar, qual o melhor horário para conversarmos?</h2>
-            <input type="text" name="horario" placeholder="Ex: Manhã às 10h" required>
-            <p style="font-size: 12px; color: #666; text-align: center;">🔒 Seus dados são protegidos por sigilo absoluto e segurança estratégica.</p>
+            <input type="text" id="horario" name="horario" placeholder="Ex: Manhã às 10h / Tarde às 15h" required>
+            <p style="font-size: 12px; color: #666; text-align: center; margin-bottom: 20px;">
+                🔒 Seus dados são protegidos por sigilo absoluto e segurança estratégica.
+            </p>
             <button type="submit" class="btn-nav" style="background: var(--accent);">Finalizar e Enviar via WhatsApp</button>
             <span class="back-link" onclick="prevStep()">Voltar</span>
         </div>
+
     </form>
 </div>
 
@@ -85,21 +100,16 @@
     const steps = document.querySelectorAll(".step");
     const progress = document.getElementById("progress");
 
-    function verificarOutro() {
-        const select = document.getElementById("objetivo_select");
-        const outroCampo = document.getElementById("outro_campo");
-        outroCampo.style.display = select.value === "Outros" ? "block" : "none";
-    }
-
     function updateProgress() {
         let percent = ((current) / (steps.length - 1)) * 100;
         progress.style.width = percent + "%";
     }
 
     function nextStep() {
-        const inputs = steps[current].querySelectorAll("input, select");
+        const inputs = steps[current].querySelectorAll("input, select, textarea");
         let valid = true;
-        inputs.forEach(i => { if(!i.checkValidity()) { i.reportValidity(); valid = false; } });
+        inputs.forEach(i => { if(i.hasAttribute('required') && !i.value) { i.reportValidity(); valid = false; } });
+        
         if(valid) {
             steps[current].classList.remove("active");
             current++;
@@ -115,20 +125,31 @@
         updateProgress();
     }
 
-    function enviarWhatsApp(event) {
-        // Pega os dados para a mensagem
+    function prepararEnvio(event) {
+        // Captura os dados para a mensagem de WhatsApp
         const nome = document.getElementById('nome').value;
-        const objetivoSelect = document.getElementById('objetivo_select').value;
-        const objetivoFinal = objetivoSelect === "Outros" ? document.getElementById('outro_objetivo_txt').value : objetivoSelect;
+        const objetivoPrincipal = document.getElementById('objetivo_select').value;
+        const detalhes = document.getElementById('detalhes_objetivo').value;
+        const horario = document.getElementById('horario').value;
+
+        // Formata a mensagem
+        let resumoObjetivo = detalhes ? `${objetivoPrincipal} (${detalhes})` : objetivoPrincipal;
         
-        // Configura o número e a mensagem
-        const seuNumero = "5511999999999"; // SUBSTITUA PELO SEU NÚMERO AQUI (com 55 + DDD)
-        const mensagem = `Olá, Jheniffer! Acabei de realizar meu diagnóstico financeiro no site. Meu nome é ${nome} e meu principal objetivo hoje é: ${objetivoFinal}. Gostaria de agendar minha sessão estratégica!`;
-        
-        const url = `https://wa.me/${seuNumero}?text=${encodeURIComponent(mensagem)}`;
-        
-        // Abre o WhatsApp em nova aba
-        window.open(url, '_blank');
+        const seuNumero = "55XXXXXXXXXXX"; // <--- COLOQUE O SEU NÚMERO AQUI (Ex: 5511999999999)
+        const mensagem = `Olá, Jheniffer! Acabei de realizar meu diagnóstico financeiro no site. 
+Meu nome é: ${nome}
+Meu objetivo: ${resumoObjetivo}
+Melhor horário para contacto: ${horario}
+
+Gostaria de agendar minha sessão estratégica!`;
+
+        // URL do WhatsApp
+        const urlWa = `https://wa.me/${seuNumero}?text=${encodeURIComponent(mensagem)}`;
+
+        // Abre o WhatsApp em nova aba após um pequeno delay para o Formspree processar
+        setTimeout(() => {
+            window.open(urlWa, '_blank');
+        }, 500);
     }
 </script>
 
