@@ -6,177 +6,112 @@
     <title>Jheniffer Vitória | Consultoria Estratégica</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #003333; /* Verde Escuro */
-            --accent: #B8860B; /* Dourado */
-            --bg-card: #ffffff;
-            --text-dark: #1a1a1a;
-        }
-
-        body, html {
-            margin: 0; padding: 0; min-height: 100vh;
-            font-family: 'Inter', sans-serif;
-            background-color: #f9f9f7; color: var(--primary);
-            display: flex; flex-direction: column;
-        }
-
-        /* Hero Section Premium */
-        .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, #064d4d 100%);
-            color: white; padding: 100px 20px 140px; text-align: center;
-            border-bottom: 6px solid var(--accent);
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', serif; font-size: clamp(32px, 6vw, 52px);
-            margin-bottom: 25px; line-height: 1.1; letter-spacing: -1px;
-        }
-
-        .hero p {
-            font-size: clamp(16px, 3vw, 20px); max-width: 850px; margin: 0 auto 40px;
-            opacity: 0.85; line-height: 1.7; font-weight: 300;
-        }
-
-        .cta-main {
-            display: inline-block; padding: 20px 45px; background: var(--accent);
-            color: white; text-decoration: none; font-weight: 600;
-            border-radius: 2px; text-transform: uppercase; letter-spacing: 3px;
-            transition: 0.4s; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        /* Formulário Sophisticated */
-        .form-container {
-            max-width: 650px; width: 90%; margin: -80px auto 100px; 
-            padding: 50px; background: var(--bg-card);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.12);
-            border-radius: 4px; position: relative;
-        }
-
-        .progress-container {
-            width: 100%; height: 3px; background: #eee;
-            position: absolute; top: 0; left: 0;
-        }
-
-        #progress-bar { height: 100%; background: var(--accent); width: 0%; transition: 0.5s; }
-
-        .step { display: none; animation: slideUp 0.6s ease; }
+        :root { --primary: #003333; --accent: #B8860B; --bg: #ffffff; }
+        body, html { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background-color: #f4f4f4; color: var(--primary); scroll-behavior: smooth; }
+        
+        .hero { background: linear-gradient(135deg, var(--primary) 0%, #064d4d 100%); color: white; padding: 100px 20px; text-align: center; border-bottom: 5px solid var(--accent); }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 5vw, 48px); margin-bottom: 20px; line-height: 1.2; }
+        .hero p { font-size: clamp(16px, 3vw, 20px); max-width: 800px; margin: 0 auto 30px; opacity: 0.9; line-height: 1.6; }
+        
+        .cta-main { display: inline-block; padding: 18px 40px; background: var(--accent); color: white; text-decoration: none; font-weight: 600; border-radius: 4px; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; cursor: pointer; }
+        
+        .form-section { max-width: 600px; margin: -50px auto 100px; padding: 40px; background: var(--bg); border-radius: 8px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        
+        .step { display: none; animation: fadeIn 0.5s ease; }
         .step.active { display: block; }
-
-        h2 { 
-            font-family: 'Playfair Display', serif; font-size: 28px; 
-            margin-bottom: 30px; color: var(--primary);
-        }
-
-        input, select, textarea {
-            width: 100%; padding: 18px 0; margin-bottom: 25px;
-            border: none; border-bottom: 1px solid #ccc;
-            font-size: 18px; background: transparent;
-            outline: none; transition: border-color 0.3s;
-            color: var(--text-dark); font-family: 'Inter', sans-serif;
-        }
-
-        input:focus, select:focus, textarea:focus { border-bottom: 2px solid var(--accent); }
-
-        .btn-nav {
-            width: 100%; padding: 20px; background: var(--primary);
-            color: white; border: none; font-weight: 600;
-            text-transform: uppercase; letter-spacing: 2px;
-            cursor: pointer; transition: 0.3s; margin-top: 10px;
-        }
-
+        
+        h2 { font-family: 'Playfair Display', serif; margin-bottom: 25px; font-size: 24px; }
+        
+        input, select, textarea { width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px; box-sizing: border-box; outline-color: var(--accent); font-family: 'Inter', sans-serif; }
+        
+        .btn-nav { width: 100%; padding: 18px; background: var(--primary); color: white; border: none; border-radius: 4px; font-weight: 600; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
         .btn-nav:hover { background: var(--accent); }
+        
+        .back-link { display: block; text-align: center; margin-top: 15px; color: #666; font-size: 14px; cursor: pointer; }
+        
+        .progress-bar { width: 100%; height: 4px; background: #eee; margin-bottom: 30px; }
+        #progress { height: 100%; background: var(--accent); width: 0%; transition: 0.4s; }
 
-        .back-link {
-            display: block; text-align: center; margin-top: 20px;
-            color: #999; font-size: 13px; text-decoration: none;
-            cursor: pointer; text-transform: uppercase; letter-spacing: 1px;
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 600px) {
-            .form-container { padding: 30px; margin-top: -60px; }
-            .hero { padding: 80px 20px 100px; }
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @media (min-width: 1024px) { .hero { padding: 140px 20px; } .form-section { padding: 60px; } }
     </style>
 </head>
 <body>
 
 <section class="hero">
-    <h1>Estratégia e Elegância na sua Gestão Patrimonial.</h1>
-    <p>A segurança de um patrimônio blindado com o toque de uma consultoria humana. Descubra a tranquilidade de quem domina o próprio destino financeiro.</p>
+    <h1>Sua Liberdade Financeira com a Segurança de uma Estratégia Exclusiva.</h1>
+    <p>A segurança de um patrimônio blindado com o toque de uma consultoria humana e estratégica. Descubra como é viver com a tranquilidade de quem domina o próprio destino financeiro.</p>
     <a href="#diagnostico" class="cta-main">Iniciar Diagnóstico</a>
 </section>
 
-<div class="form-container" id="diagnostico">
-    <div class="progress-container"><div id="progress-bar"></div></div>
+<div class="form-section" id="diagnostico">
+    <div class="progress-bar"><div id="progress"></div></div>
     
     <form id="leadForm" action="https://formspree.io/f/mojqjyyg" method="POST" onsubmit="prepararEnvio(event)">
         
-        <div class="step active" data-prog="25">
-            <h2>Qual seu nome completo?</h2>
-            <input type="text" id="nome" name="nome" placeholder="Ex: Maria Silva" required>
+        <div class="step active">
+            <h2>Vamos começar? Qual o seu nome completo?</h2>
+            <input type="text" id="nome" name="nome" placeholder="Nome Completo" required>
             <button type="button" class="btn-nav" onclick="nextStep()">Continuar</button>
         </div>
 
-        <div class="step" data-prog="50">
-            <h2>Como posso te contatar?</h2>
-            <input type="email" id="email" name="email" placeholder="Seu melhor e-mail" required>
-            <input type="tel" id="whatsapp_input" name="whatsapp" placeholder="Seu WhatsApp (com DDD)" required>
+        <div class="step">
+            <h2>Dados de Contato Profissional</h2>
+            <input type="email" name="email" id="email" placeholder="Seu melhor e-mail" required>
+            <input type="tel" id="whatsapp_input" name="whatsapp" placeholder="WhatsApp (com DDD)" required>
             <button type="button" class="btn-nav" onclick="nextStep()">Continuar</button>
-            <a class="back-link" onclick="prevStep()">Voltar</a>
+            <span class="back-link" onclick="prevStep()">Voltar</span>
         </div>
 
-        <div class="step" data-prog="75">
-            <h2>Qual seu principal foco hoje?</h2>
+        <div class="step">
+            <h2>Qual seu principal objetivo hoje?</h2>
             <select name="objetivo_principal" id="objetivo_select" required>
-                <option value="" disabled selected>Escolha uma opção</option>
+                <option value="" disabled selected>Selecione uma opção</option>
                 <option value="Organização Financeira">Organização Financeira</option>
                 <option value="Investimentos">Investimentos (Começar ou Rentabilizar)</option>
                 <option value="Blindagem Patrimonial">Blindagem Patrimonial</option>
                 <option value="Aposentadoria">Planejar Aposentadoria</option>
-                <option value="Outros">Outros</option>
+                <option value="Outros">Outros (Descreva abaixo)</option>
             </select>
-            <textarea id="detalhes_objetivo" name="detalhes_objetivo" placeholder="Detalhe aqui seu objetivo ou necessidade específica..." rows="3"></textarea>
-            <button type="button" class="btn-nav" onclick="nextStep()">Quase pronto</button>
-            <a class="back-link" onclick="prevStep()">Voltar</a>
+            
+            <textarea id="detalhes_objetivo" name="detalhes_objetivo" placeholder="Detalhe seu objetivo aqui ou conte-me mais sobre sua necessidade..." rows="4"></textarea>
+
+            <button type="button" class="btn-nav" onclick="nextStep()">Quase lá...</button>
+            <span class="back-link" onclick="prevStep()">Voltar</span>
         </div>
 
-        <div class="step" data-prog="100">
-            <h2>Melhor horário para conversarmos?</h2>
-            <input type="text" id="horario" name="horario" placeholder="Ex: Manhã às 10h / Tarde às 16h" required>
-            <p style="font-size: 12px; color: #999; text-align: center; margin-bottom: 25px;">
+        <div class="step">
+            <h2>Para finalizar, qual o melhor horário para conversarmos?</h2>
+            <input type="text" id="horario" name="horario" placeholder="Ex: Manhã às 10h / Tarde às 15h" required>
+            <p style="font-size: 12px; color: #666; text-align: center; margin-bottom: 20px;">
                 🔒 Seus dados são protegidos por sigilo absoluto e segurança estratégica.
             </p>
-            <button type="submit" class="btn-nav" style="background: var(--accent);">Finalizar Diagnóstico</button>
-            <a class="back-link" onclick="prevStep()">Voltar</a>
+            <button type="submit" class="btn-nav" style="background: var(--accent);">Finalizar e Enviar via WhatsApp</button>
+            <span class="back-link" onclick="prevStep()">Voltar</span>
         </div>
+
     </form>
 </div>
 
 <script>
     let current = 0;
     const steps = document.querySelectorAll(".step");
-    const progressBar = document.getElementById("progress-bar");
+    const progress = document.getElementById("progress");
 
-    function updateUI() {
-        let prog = steps[current].getAttribute('data-prog');
-        progressBar.style.width = prog + "%";
+    function updateProgress() {
+        let percent = ((current) / (steps.length - 1)) * 100;
+        progress.style.width = percent + "%";
     }
 
     function nextStep() {
-        const inputs = steps[current].querySelectorAll("input, select");
+        const inputs = steps[current].querySelectorAll("input, select, textarea");
         let valid = true;
         inputs.forEach(i => { if(i.hasAttribute('required') && !i.value) { i.reportValidity(); valid = false; } });
-        
         if(valid) {
             steps[current].classList.remove("active");
             current++;
             steps[current].classList.add("active");
-            updateUI();
+            updateProgress();
         }
     }
 
@@ -184,22 +119,31 @@
         steps[current].classList.remove("active");
         current--;
         steps[current].classList.add("active");
-        updateUI();
+        updateProgress();
     }
 
     function prepararEnvio(event) {
+        // Captura os dados
         const nome = document.getElementById('nome').value;
-        const objetivo = document.getElementById('objetivo_select').value;
+        const objetivoPrincipal = document.getElementById('objetivo_select').value;
         const detalhes = document.getElementById('detalhes_objetivo').value;
         const horario = document.getElementById('horario').value;
 
-        const seuNumero = "55XXXXXXXXXXX"; // <--- COLOQUE SEU NÚMERO AQUI
+        // Montagem da Mensagem Pronta
+        const seuNumero = "55XXXXXXXXXXX"; // <--- COLOQUE SEU NÚMERO AQUI (Ex: 5511999999999)
         
-        let msg = `Olá, Jheniffer! ✨%0A%0AAcabei de preencher meu diagnóstico no site.%0A%0A*Nome:* ${nome}%0A*Objetivo:* ${objetivo}`;
-        if(detalhes) msg += `%0A*Detalhes:* ${detalhes}`;
-        msg += `%0A*Horário:* ${horario}%0A%0AGostaria de agendar minha sessão estratégica!`;
+        let textoMensagem = `Olá, Jheniffer! ✨%0A%0AAcabei de preencher meu diagnóstico financeiro no seu site.%0A%0A*Nome:* ${nome}%0A*Objetivo Principal:* ${objetivoPrincipal}`;
+        
+        if(detalhes) {
+            textoMensagem += `%0A*Detalhes:* ${detalhes}`;
+        }
+        
+        textoMensagem += `%0A*Melhor horário para contato:* ${horario}%0A%0AGostaria de agendar minha sessão estratégica para falarmos sobre minha blindagem patrimonial!`;
 
-        window.open(`https://wa.me/${seuNumero}?text=${msg}`, '_blank');
+        const urlWa = `https://wa.me/${seuNumero}?text=${textoMensagem}`;
+
+        // Abre em nova aba
+        window.open(urlWa, '_blank');
     }
 </script>
 
