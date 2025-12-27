@@ -58,34 +58,34 @@
         .hero-text p { font-size: 1.1rem; opacity: 0.8; margin-bottom: 45px; max-width: 500px; font-weight: 300; }
 
         .form-card {
-            background: var(--form-bg); padding: 50px;
+            background: var(--form-bg); padding: 40px 50px;
             border-radius: 4px; color: #1a1a1a;
             box-shadow: 0 40px 80px rgba(0,0,0,0.4);
         }
 
-        .form-card h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 30px; text-align: center; color: var(--primary-bg); }
-        .form-group { margin-bottom: 20px; }
-        label { display: block; font-size: 0.7rem; font-weight: 600; margin-bottom: 8px; text-transform: uppercase; color: #888; letter-spacing: 1px; }
+        .form-card h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 25px; text-align: center; color: var(--primary-bg); }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-size: 0.65rem; font-weight: 600; margin-bottom: 5px; text-transform: uppercase; color: #888; letter-spacing: 1px; }
         
         input, select, textarea {
             width: 100%; border: none; border-bottom: 1px solid #e0e0e0;
-            padding: 12px 0; font-family: 'Inter', sans-serif; font-size: 1rem;
+            padding: 10px 0; font-family: 'Inter', sans-serif; font-size: 0.95rem;
             background: transparent; transition: 0.3s;
         }
         input:focus, select:focus, textarea:focus { outline: none; border-bottom-color: var(--accent-gold); }
 
         .btn-submit {
             background: var(--accent-gold); color: var(--primary-bg);
-            width: 100%; padding: 18px; border: none; margin-top: 10px;
+            width: 100%; padding: 18px; border: none; margin-top: 20px;
             font-weight: 600; text-transform: uppercase; letter-spacing: 2px;
             cursor: pointer; transition: var(--transition);
         }
         .btn-submit:hover { background: var(--primary-bg); color: var(--accent-gold); }
 
-        .pilares { padding: 120px 20px; background: rgba(0,0,0,0.1); text-align: center; }
-        .pilar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 60px; }
+        .pilares { padding: 100px 20px; background: rgba(0,0,0,0.1); text-align: center; }
+        .pilar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 50px; }
         .pilar-card { padding: 40px; border: 1px solid rgba(197, 160, 89, 0.15); transition: 0.4s; }
-        .pilar-card i { font-size: 2rem; color: var(--accent-gold); margin-bottom: 25px; }
+        .pilar-card i { font-size: 2rem; color: var(--accent-gold); margin-bottom: 20px; }
 
         .wa-float {
             position: fixed; bottom: 40px; right: 40px;
@@ -124,13 +124,19 @@
                             <input type="text" id="nome" name="nome" required>
                         </div>
                         <div class="form-group">
-                            <label>WhatsApp</label>
-                            <input type="tel" id="whatsapp_cli" name="whatsapp" required placeholder="(69) 99356-2003">
+                            <label>Estado Civil</label>
+                            <select id="estado_civil" name="estado_civil" required>
+                                <option value="" disabled selected>Selecione seu estado civil</option>
+                                <option value="Solteiro(a)">Solteiro(a)</option>
+                                <option value="Casado(a)">Casado(a)</option>
+                                <option value="União Estável">União Estável</option>
+                                <option value="Divorciado(a)">Divorciado(a)</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label>Principal Objetivo</label>
                             <select name="objetivo" id="objetivo" onchange="toggleOutros()" required>
-                                <option value="" disabled selected>Selecione uma opção</option>
+                                <option value="" disabled selected>O que você busca?</option>
                                 <option value="Proteção Familiar e Blindagem">Proteção Familiar e Blindagem</option>
                                 <option value="Independência Financeira">Independência Financeira</option>
                                 <option value="Gestão de Patrimônio e Herança">Gestão de Patrimônio e Herança</option>
@@ -140,8 +146,18 @@
                             </select>
                         </div>
                         <div class="form-group" id="aba-outros" style="display: none;">
-                            <label>Especifique seu objetivo</label>
-                            <textarea id="outro_objetivo" name="outro_objetivo" rows="2"></textarea>
+                            <label>Especifique</label>
+                            <textarea id="outro_objetivo" name="outro_objetivo" rows="1"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Melhor Horário para Contato</label>
+                            <select id="horario" name="horario" required>
+                                <option value="" disabled selected>Selecione um período</option>
+                                <option value="Manhã (08h às 12h)">Manhã (08h às 12h)</option>
+                                <option value="Tarde (13h às 18h)">Tarde (13h às 18h)</option>
+                                <option value="Noite (Após 18h)">Noite (Após 18h)</option>
+                                <option value="Qualquer horário">Qualquer horário</option>
+                            </select>
                         </div>
                         <button type="submit" class="btn-submit">Solicitar Consultoria</button>
                     </form>
@@ -178,18 +194,17 @@
             e.preventDefault();
             
             const nomeCli = document.getElementById('nome').value;
+            const estadoCivilCli = document.getElementById('estado_civil').value;
             const objCli = document.getElementById('objetivo').value;
             const outroObj = document.getElementById('outro_objetivo').value;
+            const horarioCli = document.getElementById('horario').value;
             
             let objetivoFinal = (objCli === 'Outros') ? outroObj : objCli;
             
-            // Monta a mensagem personalizada
-            const mensagem = `Olá Jheniffer, meu nome é ${nomeCli}. Gostaria de realizar um diagnóstico financeira completo para atingir o meu objetivo de: ${objetivoFinal}.`;
+            // MENSAGEM EXTRAORDINÁRIA E PERSONALIZADA
+            const mensagem = `Olá Jheniffer, meu nome é ${nomeCli} (${estadoCivilCli}). Gostaria de um diagnóstico completo para a conquista do meu objetivo: ${objetivoFinal}. O melhor horário para falarmos é no período da ${horarioCli}.`;
             
-            // Codifica para URL
             const msgEncoded = encodeURIComponent(mensagem);
-            
-            // Abre o WhatsApp com os dados do formulário
             window.open(`https://wa.me/+5569993562003?text=${msgEncoded}`, '_blank');
         };
     </script>
