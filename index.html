@@ -3,80 +3,340 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diagnóstico Financeiro | Jheniffer Vitória</title>
+    <title>Jheniffer Vitória | Diagnóstico Financeiro Personalizado</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #003333; --accent: #B8860B; --bg: #ffffff; }
-        body, html { margin: 0; padding: 0; height: 100%; font-family: 'Inter', sans-serif; background-color: #f8f8f8; display: flex; justify-content: center; align-items: center; overflow: hidden; }
-        .container { background: var(--bg); width: 100%; max-width: 500px; height: 100vh; display: flex; flex-direction: column; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 6px solid var(--primary); }
-        .progress-bar { width: 100%; height: 6px; background: #eee; position: absolute; top: 0; left: 0; }
-        #progress { height: 100%; background: var(--accent); width: 12%; transition: 0.5s ease; }
-        .step { display: none; padding: 60px 40px; flex-grow: 1; animation: slideIn 0.5s ease forwards; }
-        .step.active { display: flex; flex-direction: column; justify-content: center; }
-        h1, h2 { font-family: 'Playfair Display', serif; color: var(--primary); line-height: 1.3; }
-        h1 { font-size: 28px; }
-        input, select, textarea { width: 100%; padding: 15px 0; border: none; border-bottom: 2px solid #ddd; font-size: 18px; outline: none; background: transparent; margin-top: 20px; }
-        button { width: 100%; padding: 18px; background: var(--primary); color: white; border: none; border-radius: 4px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; margin-top: 30px; }
-        button:hover { background: var(--accent); }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        :root {
+            --primary-dark: #003333; /* Verde Escuro Principal */
+            --primary-light: #0d4d4d; /* Verde um pouco mais claro */
+            --accent-gold: #B8860B; /* Dourado */
+            --text-light: #f4f4f2; /* Cor clara para textos principais */
+            --text-dark: #2d2d2d; /* Cor escura para textos principais */
+            --text-secondary: #aaaaaa; /* Cinza claro para textos menores */
+            --bg-body: #f8f8f8; /* Fundo geral claro */
+            --bg-card: #ffffff; /* Fundo do card */
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Para não ter scroll na tela */
+        }
+
+        .container {
+            background: var(--bg-card);
+            width: 100%;
+            max-width: 500px; /* Largura ideal para celular */
+            height: 100vh; /* Altura total da tela */
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-top: 6px solid var(--primary-dark); /* Borda superior verde */
+        }
+
+        /* Barra de Progresso */
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background: #eee;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2; /* Para ficar por cima de tudo */
+        }
+
+        #progress-bar {
+            height: 100%;
+            background: var(--accent-gold);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        /* Telas/Passos do Formulário */
+        .step {
+            display: none;
+            padding: 50px 40px;
+            flex-grow: 1; /* Ocupa o espaço restante */
+            animation: fadeIn 0.5s ease forwards;
+            color: var(--text-dark);
+        }
+
+        .step.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centraliza o conteúdo verticalmente */
+            align-items: flex-start; /* Alinha o texto à esquerda */
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-dark);
+            font-size: 30px;
+            line-height: 1.3;
+            margin-bottom: 20px;
+            text-align: left; /* Alinhamento mais profissional */
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-dark);
+            font-size: 24px;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .step p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: var(--text-dark);
+        }
+
+        /* Inputs Elegantes */
+        input, select, textarea {
+            width: 100%;
+            padding: 15px 0;
+            border: none;
+            border-bottom: 2px solid #ddd;
+            font-size: 18px;
+            outline: none;
+            background: transparent;
+            transition: border-color 0.3s;
+            margin-bottom: 15px; /* Espaço entre os inputs */
+            color: var(--text-dark);
+        }
+
+        input:focus, textarea:focus, select:focus {
+            border-color: var(--accent-gold);
+        }
+
+        /* Botões de Navegação */
+        .footer-nav {
+            padding: 30px 40px;
+            background: var(--bg-card);
+            border-top: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* Espaço entre os botões */
+        }
+
+        button {
+            width: 100%;
+            padding: 18px;
+            background: var(--primary-dark);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        button:hover {
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+        }
+
+        .back-btn {
+            background: none;
+            color: #999;
+            margin-top: 5px; /* Pouco espaço, pois é um botão secundário */
+            text-transform: none;
+            letter-spacing: 0;
+            font-weight: 400;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            font-size: 13px;
+        }
+
+        .back-btn:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        /* Animação */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mensagem final */
+        .final-message {
+            text-align: center;
+            padding: 50px 40px;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-dark);
+            font-size: 24px;
+        }
+
+        .final-message p {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            color: #666;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
+
 <div class="container">
-    <div class="progress-bar"><div id="progress"></div></div>
+    <div class="progress-container"><div id="progress-bar"></div></div>
+
     <form id="diagForm" action="https://formspree.io/f/mojqjyyg" method="POST">
-        <div class="step active">
-            <h1>O Primeiro Passo para sua Liberdade Financeira</h1>
-            <p>Qual seu nome completo?</p>
-            <input type="text" name="nome" required>
-            <button type="button" onclick="nextStep()">Continuar</button>
+        
+        <div class="step active" data-progress="0">
+            <h1>Sua Jornada para a Liberdade Financeira Começa Aqui.</h1>
+            <p>Olá! Sou Jheniffer Vitória, sua Consultora Financeira. Minha missão é transformar suas preocupações financeiras em um futuro próspero e seguro.</p>
+            <p>Com este diagnóstico rápido e personalizado, vamos identificar seus desafios e traçar um caminho claro para você alcançar seus maiores objetivos: seja a casa própria, investimentos inteligentes ou uma reserva de emergência sólida.</p>
+            <p>Diga adeus à incerteza e comece a construir a vida financeira que você sempre sonhou.</p>
+            <button type="button" onclick="nextStep()">Iniciar Diagnóstico Gratuito</button>
         </div>
-        <div class="step">
-            <h2>E-mail e Instagram</h2>
-            <input type="email" name="email" placeholder="E-mail" required>
-            <input type="text" name="instagram" placeholder="@seu.perfil">
-            <button type="button" onclick="nextStep()">Continuar</button>
+
+        <div class="step" data-progress="15">
+            <h2>Para começarmos, qual seu nome completo?</h2>
+            <input type="text" name="nome" placeholder="Digite seu nome" required>
         </div>
-        <div class="step">
-            <h2>Onde você reside?</h2>
-            <input type="text" name="localizacao" placeholder="Cidade/Estado" required>
-            <button type="button" onclick="nextStep()">Continuar</button>
+
+        <div class="step" data-progress="30">
+            <h2>Qual seu melhor e-mail e seu usuário do Instagram?</h2>
+            <input type="email" name="email" placeholder="seuemail@exemplo.com" required>
+            <input type="text" name="instagram" placeholder="@seu.perfil (opcional)" style="margin-top:15px;">
         </div>
-        <div class="step">
-            <h2>Estado Civil</h2>
+
+        <div class="step" data-progress="45">
+            <h2>Onde você reside (cidade e estado)?</h2>
+            <input type="text" name="cidade_estado" placeholder="Ex: São Paulo, SP" required>
+        </div>
+
+        <div class="step" data-progress="60">
+            <h2>Qual seu estado civil?</h2>
             <select name="estado_civil">
                 <option value="solteiro">Solteiro(a)</option>
-                <option value="casado">Casado(a)</option>
+                <option value="casado">Casado(a) / União Estável</option>
                 <option value="divorciado">Divorciado(a)</option>
+                <option value="viuvo">Viúvo(a)</option>
             </select>
-            <button type="button" onclick="nextStep()">Continuar</button>
         </div>
-        <div class="step">
-            <h2>Possui filhos?</h2>
-            <input type="text" name="filhos" placeholder="Quantos?">
-            <button type="button" onclick="nextStep()">Continuar</button>
+
+        <div class="step" data-progress="75">
+            <h2>Você possui filhos? Se sim, quantos?</h2>
+            <input type="text" name="filhos" placeholder="Ex: Não / Sim, 2 filhos">
         </div>
-        <div class="step">
-            <h2>Objetivo Financeiro</h2>
-            <textarea name="objetivo" rows="3"></textarea>
-            <button type="button" onclick="nextStep()">Continuar</button>
+
+        <div class="step" data-progress="90">
+            <h2>Qual seu maior objetivo financeiro ou sonho hoje?</h2>
+            <textarea name="objetivo" rows="4" placeholder="Ex: Construir uma reserva de emergência, comprar imóvel, investir..."></textarea>
         </div>
-        <div class="step">
-            <h2>WhatsApp e Horário</h2>
+
+        <div class="step" data-progress="100">
+            <h2>Para finalizarmos, qual seu WhatsApp e o melhor horário para contato?</h2>
             <input type="tel" name="whatsapp" placeholder="(00) 00000-0000" required>
-            <button type="submit">Finalizar Diagnóstico</button>
+            <input type="text" name="horario_contato" placeholder="Ex: Manhã (9h-12h) ou Tarde (14h-17h)" style="margin-top:15px;">
         </div>
+
     </form>
+
+    <div class="footer-nav" id="nav-container" style="display:none;">
+        <button type="button" id="nextBtn" onclick="nextStep()">Continuar</button>
+        <button type="button" class="back-btn" id="prevBtn" onclick="prevStep()">Voltar</button>
+    </div>
 </div>
+
 <script>
-    let current = 0;
+    let currentStep = 0;
     const steps = document.querySelectorAll(".step");
-    function nextStep() {
-        steps[current].classList.remove("active");
-        current++;
-        steps[current].classList.add("active");
-        document.getElementById("progress").style.width = ((current + 1) / steps.length) * 100 + "%";
+    const progressBar = document.getElementById("progress-bar");
+    const nav = document.getElementById("nav-container");
+    const nextBtn = document.getElementById("nextBtn");
+    const prevBtn = document.getElementById("prevBtn");
+
+    // Função para atualizar a interface (botões, barra de progresso)
+    function updateUI() {
+        steps.forEach((s, i) => s.classList.toggle("active", i === currentStep)); // Mostra o passo atual
+        
+        // Esconde os botões de navegação na tela inicial (passo 0)
+        nav.style.display = currentStep === 0 ? "none" : "flex";
+
+        // Atualiza a barra de progresso
+        const progress = steps[currentStep].getAttribute("data-progress");
+        progressBar.style.width = progress + "%";
+
+        // Altera o texto do botão "Continuar" para "Finalizar Diagnóstico" no último passo
+        if (currentStep === steps.length - 1) {
+            nextBtn.innerText = "Finalizar Diagnóstico";
+            nextBtn.type = "submit"; // Transforma em botão de envio no final
+        } else {
+            nextBtn.innerText = "Continuar";
+            nextBtn.type = "button"; // Volta a ser um botão normal de navegação
+        }
+
+        // Esconde o botão "Voltar" no primeiro passo real (depois da introdução)
+        prevBtn.style.display = currentStep <= 1 ? "none" : "block"; 
     }
+
+    // Avança para o próximo passo
+    function nextStep() {
+        // Validação básica para campos obrigatórios (apenas inputs, não textarea/select para simplificar)
+        const inputs = steps[currentStep].querySelectorAll("input[required]");
+        let valid = true;
+        inputs.forEach(input => {
+            if (!input.value.trim()) { // Verifica se o campo está vazio ou só com espaços
+                valid = false;
+                input.style.borderColor = "red"; // Destaca campo inválido
+            } else {
+                input.style.borderColor = "#ddd"; // Volta ao normal
+            }
+        });
+
+        if (!valid && currentStep !== 0) { // Não valida a tela de boas-vindas
+            return; // Impede o avanço se houver campos obrigatórios vazios
+        }
+
+        if (currentStep < steps.length - 1) {
+            steps[currentStep].classList.remove("active");
+            currentStep++;
+            steps[currentStep].classList.add("active");
+            updateUI();
+        } else {
+            // Se for o último passo e tudo estiver validado, envia o formulário
+            document.getElementById("diagForm").submit();
+
+            // Exibe mensagem de sucesso após o envio (opcional, pois o Formspree já redireciona)
+            const container = document.querySelector(".container");
+            container.innerHTML = `
+                <div class="final-message">
+                    <h1>Diagnóstico Enviado!</h1>
+                    <p>🔒 Seus dados estão seguros e confidenciais. Entraremos em contato em breve para sua análise gratuita e personalizada.</p>
+                </div>
+            `;
+        }
+    }
+
+    // Volta para o passo anterior
+    function prevStep() {
+        if (currentStep > 0) {
+            steps[currentStep].classList.remove("active");
+            currentStep--;
+            steps[currentStep].classList.add("active");
+            updateUI();
+        }
+    }
+
+    // Inicializa a UI ao carregar a página
+    document.addEventListener('DOMContentLoaded', updateUI);
 </script>
+
 </body>
 </html>
