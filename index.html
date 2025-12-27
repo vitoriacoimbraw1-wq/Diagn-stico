@@ -1,227 +1,417 @@
 <!DOCTYPE html>
+
 <html lang="pt-br">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Jheniffer Vitória | Consultoria Estratégica W1</title>
+
     
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+
+
     <style>
+
         :root {
+
             --primary-bg: #003333;
+
             --accent-gold: #C5A059;
+
             --text-light: #F8F9F8;
+
             --form-bg: #ffffff;
+
             --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+
         }
+
+
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         html { scroll-behavior: smooth; }
+
         body {
+
             background-color: var(--primary-bg);
+
             color: var(--text-light);
+
             font-family: 'Inter', sans-serif;
+
             overflow-x: hidden;
+
             line-height: 1.6;
+
         }
+
+
 
         .hero-section {
+
             min-height: 100vh;
+
             display: flex;
+
             align-items: center;
+
             position: relative;
-            background-image: radial-gradient(circle at 80% 20%, rgba(197, 160, 89, 0.1) 0%, transparent 40%);
-            padding: 60px 20px;
+
+            background-color: var(--primary-bg);
+
+            background-image: radial-gradient(circle at 80% 20%, rgba(197, 160, 89, 0.08) 0%, transparent 40%),
+
+                              url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 5L52 48L95 50L52 52L50 95L48 52L5 50L48 48Z" fill="%23C5A059" fill-opacity="0.05"/></svg>');
+
+            padding: 100px 20px;
+
         }
 
-        .container { max-width: 1400px; margin: 0 auto; width: 100%; position: relative; z-index: 2; }
+
+
+        .container { max-width: 1200px; margin: 0 auto; width: 100%; position: relative; z-index: 2; }
+
+
 
         .logo-area {
+
             position: absolute; top: 40px; left: 40px;
+
             font-size: 0.85rem; letter-spacing: 4px; font-weight: 400;
+
             border-bottom: 1px solid var(--accent-gold); padding-bottom: 5px;
+
         }
 
-        .hero-grid { 
-            display: grid; 
-            grid-template-columns: 1fr 1.2fr 1fr; 
-            gap: 40px; 
-            align-items: center; 
-        }
+
+
+        .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; }
+
+
 
         .hero-text h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 3.5vw, 3.2rem);
-            line-height: 1.2; margin-bottom: 25px;
-        }
-        .hero-text h1 i { font-style: italic; font-weight: 400; color: var(--accent-gold); }
-        .hero-text p { font-size: 1.1rem; opacity: 0.8; margin-bottom: 40px; font-weight: 300; }
 
-        /* AREA DA SUA FOTO */
-        .hero-image {
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            height: 100%;
-            align-self: end;
+            font-family: 'Playfair Display', serif;
+
+            font-size: clamp(2.2rem, 5vw, 4rem);
+
+            line-height: 1.2; margin-bottom: 25px;
+
         }
-        .hero-image img {
-            width: 100%;
-            max-width: 500px;
-            height: auto;
-            /* Filtro para suavizar a integração com o fundo escuro */
-            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));
-            border-radius: 10px;
-        }
+
+        .hero-text h1 i { font-style: italic; font-weight: 400; }
+
+        .hero-text p { font-size: 1.1rem; opacity: 0.8; margin-bottom: 40px; max-width: 500px; font-weight: 300; }
+
+
 
         .form-card {
-            background: var(--form-bg); padding: 35px;
-            border-radius: 8px; color: #1a1a1a;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+
+            background: var(--form-bg); padding: 40px;
+
+            border-radius: 4px; color: #1a1a1a;
+
+            box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+
             width: 100%;
+
         }
 
-        .form-card h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 20px; text-align: center; color: var(--primary-bg); }
-        .form-group { margin-bottom: 15px; }
+
+
+        .form-card h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 25px; text-align: center; color: var(--primary-bg); }
+
+        .form-group { margin-bottom: 20px; }
+
         label { display: block; font-size: 0.65rem; font-weight: 600; margin-bottom: 5px; text-transform: uppercase; color: #888; letter-spacing: 1px; }
+
         
+
         input, select, textarea {
+
             width: 100%; border: none; border-bottom: 1px solid #e0e0e0;
-            padding: 8px 0; font-family: 'Inter', sans-serif; font-size: 0.9rem;
+
+            padding: 10px 0; font-family: 'Inter', sans-serif; font-size: 0.95rem;
+
             background: transparent; transition: 0.3s;
+
         }
+
         input:focus, select:focus, textarea:focus { outline: none; border-bottom-color: var(--accent-gold); }
 
+
+
         .btn-submit {
+
             background: var(--accent-gold); color: var(--primary-bg);
-            width: 100%; padding: 16px; border: none; margin-top: 15px;
+
+            width: 100%; padding: 18px; border: none; margin-top: 15px;
+
             font-weight: 600; text-transform: uppercase; letter-spacing: 2px;
+
             cursor: pointer; transition: var(--transition);
-        }
-        .btn-submit:hover { background-color: #d4b375; transform: translateY(-2px); }
 
-        /* RESPONSIVIDADE */
-        @media (max-width: 1150px) {
-            .hero-grid { grid-template-columns: 1fr 1fr; }
-            .hero-image { display: none; } 
         }
 
-        @media (max-width: 768px) {
-            .hero-section { padding: 100px 20px 40px; }
-            .hero-grid { grid-template-columns: 1fr; text-align: center; }
-            .logo-area { left: 50%; transform: translateX(-50%); border: none; }
-            .hero-text h1 { font-size: 2.2rem; }
+
+
+        @media (max-width: 992px) {
+
+            .hero-section { padding: 120px 20px 60px; height: auto; }
+
+            .hero-grid { grid-template-columns: 1fr; gap: 50px; text-align: center; }
+
+            .hero-text p { margin: 0 auto 40px; }
+
+            .logo-area { position: absolute; top: 30px; left: 50%; transform: translateX(-50%); border: none; }
+
+            .form-card { padding: 30px 20px; }
+
         }
+
+
 
         .wa-float {
+
             position: fixed; bottom: 30px; right: 30px;
+
             display: flex; align-items: center; gap: 12px;
+
             text-decoration: none; color: var(--accent-gold);
+
             font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; z-index: 100;
+
         }
+
         .wa-icon {
+
             width: 50px; height: 50px; border: 1px solid var(--accent-gold);
+
             border-radius: 50%; display: flex; align-items: center; justify-content: center;
+
             font-size: 1.3rem; background: var(--primary-bg);
+
         }
+
     </style>
+
 </head>
+
 <body>
 
+
+
     <header class="hero-section">
+
         <div class="logo-area">JHENIFFER VITÓRIA</div>
+
         <div class="container">
+
             <div class="hero-grid">
-                
+
                 <div class="hero-text">
+
                     <h1>Sua <i>Liberdade Financeira</i> sob uma nova perspectiva estratégica.</h1>
+
                     <p>Planejamento de alto padrão focado em proteção, crescimento e perpetuidade do seu legado.</p>
+
                 </div>
 
-                <div class="hero-image">
-                    <img src="https://postimg.cc/B8X4TKLR" alt="Jheniffer Vitória">
-                </div>
+
 
                 <div class="form-card" id="diagnostico">
+
                     <h2>O Diagnóstico</h2>
+
                     <form id="lp-form">
+
                         <div class="form-group">
+
                             <label>Nome Completo</label>
+
                             <input type="text" id="nome" required>
+
                         </div>
+
                         <div class="form-group">
+
                             <label>WhatsApp</label>
+
                             <input type="tel" id="whatsapp_cli" placeholder="(00) 00000-0000" required>
+
                         </div>
+
                         <div class="form-group">
+
                             <label>Estado Civil</label>
+
                             <select id="estado_civil" required>
-                                <option value="" disabled selected>Selecione</option>
+
+                                <option value="" disabled selected>Selecione seu estado civil</option>
+
                                 <option value="Solteiro(a)">Solteiro(a)</option>
+
                                 <option value="Casado(a)">Casado(a)</option>
+
                                 <option value="União Estável">União Estável</option>
+
                                 <option value="Divorciado(a)">Divorciado(a)</option>
+
                             </select>
+
                         </div>
+
                         <div class="form-group">
+
                             <label>Principal Objetivo</label>
+
                             <select id="objetivo" onchange="toggleOutros()" required>
+
                                 <option value="" disabled selected>O que você busca?</option>
+
                                 <option value="Proteção Familiar e Blindagem">Proteção Familiar e Blindagem</option>
+
                                 <option value="Independência Financeira">Independência Financeira</option>
+
                                 <option value="Gestão de Patrimônio e Herança">Gestão de Patrimônio e Herança</option>
+
                                 <option value="Investimentos">Investimentos</option>
+
+                                <option value="Organização Financeira">Organização Financeira</option>
+
                                 <option value="Outros">Outros</option>
+
                             </select>
+
                         </div>
+
                         <div class="form-group" id="aba-outros" style="display: none;">
-                            <label>Especifique</label>
+
+                            <label>Especifique seu objetivo</label>
+
                             <textarea id="outro_objetivo" rows="2"></textarea>
+
                         </div>
+
                         <div class="form-group">
-                            <label>Melhor Horário</label>
+
+                            <label>Melhor Horário para Contato</label>
+
                             <select id="horario" required>
+
                                 <option value="" disabled selected>Escolha um período</option>
-                                <option value="Manhã">Manhã</option>
-                                <option value="Tarde">Tarde</option>
-                                <option value="Noite">Noite</option>
+
+                                <option value="Manhã (08h às 12h)">Manhã (08h às 12h)</option>
+
+                                <option value="Tarde (13h às 18h)">Tarde (13h às 18h)</option>
+
+                                <option value="Noite (Após 18h)">Noite (Após 18h)</option>
+
                             </select>
+
                         </div>
+
                         <button type="submit" class="btn-submit">Solicitar Consultoria</button>
+
                     </form>
+
                 </div>
 
             </div>
+
         </div>
+
     </header>
 
-    <a href="https://wa.me/+5569993562003" class="wa-float" target="_blank">
+
+
+    <a href="https://wa.me/+5569993562003?text=Olá%20Jheniffer,%20gostaria%20de%20solicitar%20um%20diagnóstico%20financeiro." class="wa-float" target="_blank">
+
         <span>Falar com Consultora</span>
+
         <div class="wa-icon"><i class="fa-brands fa-whatsapp"></i></div>
+
     </a>
 
+
+
     <script>
+
         function toggleOutros() {
+
             const select = document.getElementById('objetivo');
+
             const abaOutros = document.getElementById('aba-outros');
+
             abaOutros.style.display = select.value === 'Outros' ? 'block' : 'none';
+
         }
 
+
+
         const form = document.getElementById('lp-form');
+
         form.onsubmit = (e) => {
+
             e.preventDefault();
+
             const nome = document.getElementById('nome').value;
+
+            const zap = document.getElementById('whatsapp_cli').value;
+
             const civil = document.getElementById('estado_civil').value;
-            const objFinal = (document.getElementById('objetivo').value === 'Outros') ? document.getElementById('outro_objetivo').value : document.getElementById('objetivo').value;
+
+            const objBase = document.getElementById('objetivo').value;
+
+            const outro = document.getElementById('outro_objetivo').value;
+
+            const hora = document.getElementById('horario').value;
+
             
-            const texto = `Olá Jheniffer! Me chamo ${nome}. Sou ${civil} e busco ${objFinal}. Gostaria de um diagnóstico.`;
+
+            let objFinal = (objBase === 'Outros') ? outro : objBase;
+
+            
+
+            // MENSAGEM COM TODOS OS DADOS SOLICITADOS
+
+            const texto = `Olá Jheniffer! Me chamo ${nome} e sou ${civil}. 
+
+
+
+Meu WhatsApp de contato é: ${zap}.
+
+Meu objetivo principal é: ${objFinal}.
+
+O melhor horário para falarmos é: ${hora}.
+
+
+
+Gostaria de realizar meu diagnóstico estratégico.`;
+
+
+
             const link = `https://wa.me/+5569993562003?text=${encodeURIComponent(texto)}`;
+
             window.open(link, '_blank');
+
         };
+
     </script>
+
 </body>
+
 </html>
